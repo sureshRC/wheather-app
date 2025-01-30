@@ -55,75 +55,103 @@ const Weather = () => {
 
   return (
     <>
-        <Container className="mt-3" style={{ minHeight: "100%", padding: "20px" }}>
-            <div className="shadow-lg p-4 text-center" style={{ borderRadius: "8px", backgroundColor: "#fff" }}>
-                <h3 className="mb-4 text-primary">Check Weather</h3>
+      <Container
+        // className="mt-3"
+        style={{
+          minWidth: "100vw",
+          padding: "20px",
+          margin: "0",
+          background: "linear-gradient(135deg,rgb(170, 143, 198) 0%,rgb(97, 148, 236) 100%)",
+        }}
+      >
+        <div
+          className="p-4 text-center"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <h3 className="mb-4 text-primary">Check Weather</h3>
 
-                <Form onSubmit={(e) => fetchWeather(e)}>
-                    <Row className="mb-3">
-                        <Col md={8} className="mb-2">
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter city name"
-                                value={city}
-                                onChange={(e) => setCity(e.target.value)}
-                                className='fw-semibold'
-                            />
-                        </Col>
-                        <Col md={4} className="mb-2">
-                            <Button variant="primary" onClick={(e) => fetchWeather(e)} className="w-100">
-                                Get Weather
-                            </Button>
-                        </Col>
-                    </Row>
-                </Form>
+          <Form onSubmit={(e) => fetchWeather(e)}>
+            <Row className="mb-3">
+              <Col md={8} className="mb-2">
+                <Form.Control
+                  type="text"
+                  placeholder="Enter city name"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="fw-semibold"
+                />
+              </Col>
+              <Col md={4} className="mb-2">
+                <Button
+                  variant="primary"
+                  onClick={(e) => fetchWeather(e)}
+                  className="w-100"
+                >
+                  Get Weather
+                </Button>
+              </Col>
+            </Row>
+          </Form>
 
-                {loading && <Spinner animation="border" variant="primary" className="my-3" />}
-                {error && <Alert variant="danger">{error}</Alert>}
+          {loading && (
+            <Spinner animation="border" variant="primary" className="my-3" />
+          )}
+          {error && <Alert variant="danger">{error}</Alert>}
 
-                {weather && weather.data && (
-                    <div className="mt-4">
-                        <Row className="mb-3">
-                            <Col xs={12}>
-                                <h3 className="text-dark">{weather.data.name}, {weather.data.sys.country}</h3>
-                                <p className="lead">{getWeatherIcon(weather.data.weather[0].main)} {weather.data.weather[0].description}</p>
-                            </Col>
-                        </Row>
+          {weather && weather.data && (
+            <div className="mt-4">
+              <Row className="mb-3">
+                <Col xs={12}>
+                  <h3 className="text-dark">
+                    {weather.data.name}, {weather.data.sys.country}
+                  </h3>
+                  <p className="lead">
+                    {getWeatherIcon(weather.data.weather[0].main)}{" "}
+                    {weather.data.weather[0].description}
+                  </p>
+                </Col>
+              </Row>
 
-                        <Row className="mb-3">
-                            <Col md={6}>
-                                <h4 className="text-primary">{weather.data.main.temp}°C</h4>
-                                <p>🌡️ Temperature</p>
-                            </Col>
-                            <Col md={6}>
-                                <h4 className="text-info">{weather.data.main.humidity}%</h4>
-                                <p>💧 Humidity</p>
-                            </Col>
-                        </Row>
+              <Row className="mb-3">
+                <Col md={6}>
+                  <h4 className="text-primary">{weather.data.main.temp}°C</h4>
+                  <p>🌡️ Temperature</p>
+                </Col>
+                <Col md={6}>
+                  <h4 className="text-info">{weather.data.main.humidity}%</h4>
+                  <p>💧 Humidity</p>
+                </Col>
+              </Row>
 
-                        <Row className="mb-3">
-                            <Col md={6}>
-                                <h5 className="text-warning">🌅 {formatTime(weather.data.sys.sunrise)}</h5>
-                                <p>Sunrise</p>
-                            </Col>
-                            <Col md={6}>
-                                <h5 className="text-warning">🌇 {formatTime(weather.data.sys.sunset)}</h5>
-                                <p>Sunset</p>
-                            </Col>
-                        </Row>
+              <Row className="mb-3">
+                <Col md={6}>
+                  <h5 className="text-warning">
+                    🌅 {formatTime(weather.data.sys.sunrise)}
+                  </h5>
+                  <p>Sunrise</p>
+                </Col>
+                <Col md={6}>
+                  <h5 className="text-warning">
+                    🌇 {formatTime(weather.data.sys.sunset)}
+                  </h5>
+                  <p>Sunset</p>
+                </Col>
+              </Row>
 
-                        <Row className="mt-4">
-                            <Col xs={12}>
-                                <h5 className="text-secondary">💨 {weather.data.wind.speed} m/s</h5>
-                                <p>Wind Speed</p>
-                            </Col>
-                        </Row>
-                    </div>
-                )}
+              <Row className="mt-4">
+                <Col xs={12}>
+                  <h5 className="text-secondary">
+                    💨 {weather.data.wind.speed} m/s
+                  </h5>
+                  <p>Wind Speed</p>
+                </Col>
+              </Row>
             </div>
-        </Container>
+          )}
+        </div>
+      </Container>
     </>
-  )
+  );
 }
 
 export default Weather

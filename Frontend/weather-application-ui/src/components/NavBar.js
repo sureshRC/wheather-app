@@ -5,7 +5,7 @@ import brand_img from '../assets/nav_brand.png'
 const NavBar = () => {
   return (
     <>
-        <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
+        <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
                 <Navbar.Brand href="#" aria-label="Weather App">
                     <Container >
