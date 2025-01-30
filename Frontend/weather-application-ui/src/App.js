@@ -1,16 +1,10 @@
 import './App.css';
-import WeatherApp from './components/Weather';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="navbar">
-        <p>
-          Weather Application
-        </p>
-      </header> */}
-      <WeatherApp/>
-
+      <Home/>
     </div>
   );
 }

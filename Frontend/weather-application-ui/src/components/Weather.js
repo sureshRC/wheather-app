@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { Container, Card, Form, Button, Spinner, Row, Col, Alert, Navbar, Nav } from "react-bootstrap";
+import React, { useState } from 'react'
+import { Alert, Button, Card, Col, Container, Form, Row, Spinner } from 'react-bootstrap'
 import { WiDaySunny, WiCloudy, WiRain, WiFog, WiWindy } from "react-icons/wi";
+import axios from "axios";
 
-const WeatherApp = () => {
+
+const Weather = () => {
+
     const [city, setCity] = useState("");
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -30,6 +32,7 @@ const WeatherApp = () => {
         }
     };
 
+
     const fetchWeather = async () => {
         setLoading(true);
         setError("");
@@ -50,25 +53,10 @@ const WeatherApp = () => {
         return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     };
 
-    return (
-        <>
-            {/* Header/Navbar */}
-            <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
-                <Container>
-                    <Navbar.Brand href="#">🌍 Weather App</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ms-auto">
-                            <Nav.Link href="#">Home</Nav.Link>
-                            <Nav.Link href="#">About</Nav.Link>
-                            <Nav.Link href="#">Contact</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
 
-            {/* Main Container */}
-            <Container className="mt-3">
+  return (
+    <>
+        <Container className="mt-3">
                 <Card className="shadow-lg p-4 text-center">
                     <h3 className="mb-4 text-primary">Check Weather</h3>
 
@@ -128,15 +116,8 @@ const WeatherApp = () => {
                     )}
                 </Card>
             </Container>
+    </>
+  )
+}
 
-            {/* Footer */}
-            <footer className="bg-dark text-white text-center py-3 mt-4">
-                <Container>
-                    <p className="mb-0">Weather App © {new Date().getFullYear()} | Developed by You</p>
-                </Container>
-            </footer>
-        </>
-    );
-};
-
-export default WeatherApp;
+export default Weather
