@@ -61,7 +61,7 @@ const Weather = () => {
           minWidth: "100vw",
           padding: "20px",
           margin: "0",
-          background: "linear-gradient(135deg,rgb(170, 143, 198) 0%,rgb(97, 148, 236) 100%)",
+          background: "linear-gradient(159deg, rgba(252,177,123,1) 0%, rgba(12,176,250,1) 100%)"
         }}
       >
         <div
