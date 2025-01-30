@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Alert, Button, Card, Col, Container, Form, Row, Spinner } from 'react-bootstrap'
 import { WiDaySunny, WiCloudy, WiRain, WiFog, WiWindy } from "react-icons/wi";
-import axios from "axios";
+import { getWeather } from '../service/api';
 
 
 const Weather = () => {
@@ -10,8 +10,6 @@ const Weather = () => {
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-
-    const BACKEND_URL = "http://localhost:8081/api/weather";
 
     const getWeatherIcon = (main) => {
         switch (main) {
@@ -33,16 +31,17 @@ const Weather = () => {
     };
 
 
-    const fetchWeather = async () => {
+    const fetchWeather = async (e) => {
+        e.preventDefault();
         setLoading(true);
         setError("");
         setWeather(null);
 
         try {
-            const response = await axios.get(`${BACKEND_URL}/${city}`);
-            setWeather(response.data);
+            const data = await getWeather(city);
+            setWeather(data);
         } catch (err) {
-            setError("City not found. Please try again.");
+            setError(err.message);
         }
 
         setLoading(false);
@@ -56,11 +55,11 @@ const Weather = () => {
 
   return (
     <>
-        <Container className="mt-3">
+        <Container className="mt-3" style={{ minHeight: "100%" }}>
                 <Card className="shadow-lg p-4 text-center">
                     <h3 className="mb-4 text-primary">Check Weather</h3>
 
-                    <Form>
+                    <Form onSubmit={(e) => fetchWeather(e)}>
                         <Row className="mb-3">
                             <Col md={8}>
                                 <Form.Control
@@ -71,7 +70,7 @@ const Weather = () => {
                                 />
                             </Col>
                             <Col md={4}>
-                                <Button variant="primary" onClick={fetchWeather} className="w-100">
+                                <Button variant="primary" onClick={(e)=>fetchWeather(e)} className="w-100">
                                     Get Weather
                                 </Button>
                             </Col>
