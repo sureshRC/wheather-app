@@ -1,0 +1,24 @@
+.about-hero {
+    min-height: 90vh;
+    background: linear-gradient(159deg, rgba(252, 177, 123, 1) 0%, rgba(12, 176, 250, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .text-section h1 {
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .text-section p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .image-section img {
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  

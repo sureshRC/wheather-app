@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Alert, Button, Card, Col, Container, Form, Row, Spinner } from 'react-bootstrap'
 import { WiDaySunny, WiCloudy, WiRain, WiFog, WiWindy } from "react-icons/wi";
 import { getWeather } from '../service/api';
+import '../styles/weather.css'
 
 
 const Weather = () => {
@@ -56,9 +57,10 @@ const Weather = () => {
   return (
     <>
       <Container
-        // className="mt-3"
+        className="mt-5 pt-4"
         style={{
-          minWidth: "100vw",
+          maxWidth: "100%",
+          minHeight: "90vh",
           padding: "20px",
           margin: "0",
           background: "linear-gradient(159deg, rgba(252,177,123,1) 0%, rgba(12,176,250,1) 100%)"
@@ -68,7 +70,7 @@ const Weather = () => {
           className="p-4 text-center"
           style={{ backgroundColor: "transparent" }}
         >
-          <h3 className="mb-4 text-primary">Check Weather</h3>
+          <h3 className="mb-4 c-heading">Check the Weather</h3>
 
           <Form onSubmit={(e) => fetchWeather(e)}>
             <Row className="mb-3">
