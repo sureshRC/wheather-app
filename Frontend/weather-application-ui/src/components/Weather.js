@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Button, Card, Col, Container, Form, Row, Spinner } from 'react-bootstrap'
+import { Alert, Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap'
 import { WiDaySunny, WiCloudy, WiRain, WiFog, WiWindy } from "react-icons/wi";
 import { getWeather } from '../service/api';
 import '../styles/weather.css'
