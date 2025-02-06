@@ -1,0 +1,35 @@
+.success-popup {
+    position: fixed;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 10px 10px 0 10px;
+    width: auto;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 0;
+    text-align: center;
+    animation: slideUp 3s ease-in-out forwards;
+  }
+  
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      bottom: -40px;
+    }
+    30% {
+      opacity: 1;
+      bottom: 40px;
+    }
+    80% {
+      opacity: 1;
+      bottom: 40px;
+    }
+    100% {
+      opacity: 0;
+      bottom: -40px;
+    }
+  }
+  

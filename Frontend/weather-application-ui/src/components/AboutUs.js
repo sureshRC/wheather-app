@@ -8,7 +8,7 @@ import "../styles/aboutUs.css";
 
 const AboutUs = () => {
   return (
-    <section className="about-hero d-flex align-items-center">
+    <section className="about-hero d-flex align-items-center mt-5">
       <Container>
         <Row className="align-items-center">
           <Col md={6} className="text-section mb-5 mt-5">

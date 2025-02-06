@@ -120,7 +120,7 @@ const Weather = () => {
                   <p>🌡️ Temperature</p>
                 </Col>
                 <Col md={6}>
-                  <h4 className="text-info">{weather.data.main.humidity}%</h4>
+                  <h4 className="text-primary">{weather.data.main.humidity}%</h4>
                   <p>💧 Humidity</p>
                 </Col>
               </Row>
