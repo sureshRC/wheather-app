@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Message from Weather Application</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(159deg, rgba(252,177,123,1) 0%, rgba(12,176,250,1) 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .header h2 {
+            color: #333;
+            margin: 0;
+        }
+        .message-content {
+            padding: 20px 0;
+            line-height: 1.6;
+            color: #444;
+        }
+        .message-box {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        .cta-button:hover {
+            background-color: #388E3C;
+        }
+    </style>
+</head>
+<body>
+
+<div class="email-container">
+    <div class="header">
+        <h2>🌦️ New Message from Weather Application</h2>
+    </div>
+
+    <div class="message-content">
+        <p><strong>Name:</strong> {{name}}</p>
+        <p><strong>Email:</strong> <a href="mailto:{{email}}">{{email}}</a></p>
+        <p><strong>Message:</strong></p>
+        <div class="message-box">
+            <p>{{message}}</p>
+        </div>
+
+        <p>If you’d like to respond, you can reach out to <strong>{{name}}</strong> by clicking below:</p>
+        <a class="cta-button" href="mailto:{{email}}">Reply to {{name}}</a>
+    </div>
+
+    <div class="footer">
+        <p>🌍 Weather Application Team</p>
+        <p>This is an automated message. Please do not reply directly.</p>
+    </div>
+</div>
+
+</body>
+</html>

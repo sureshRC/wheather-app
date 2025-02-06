@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/api/weather")
+@RequestMapping("/api/weather/v1")
 @CrossOrigin(origins = "http://localhost:3000")
 public class WeatherController implements WeatherConstants
 {

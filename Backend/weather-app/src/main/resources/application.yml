@@ -1,6 +1,17 @@
 spring:
   application:
     name: wheather-app
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sureshkukkala5544@gmail.com
+    password: eqnw yrzr ugpx kltj
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 server:
   port: 8081
