@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Card, Spinner } from "react-bootstrap";
 import { BsEnvelope, BsGeoAlt, BsTelephone } from "react-icons/bs";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { senContactUsMessage } from "../service/api";
+import { sendContactUsMessage } from "../service/api";
 import '../styles/contactUs.css'
 
 const ContactUs = () => {
@@ -11,6 +11,7 @@ const ContactUs = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [successBgColor, setSuccessBgColor]=useState("");
+  const [isLoading, setIsLoading] = useState(false);
   
 
   const validationSchema = Yup.object({
@@ -40,7 +41,7 @@ const ContactUs = () => {
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
 
-      setIsSubmitted(true);
+      setIsLoading(true);
 
       try{
         // throw Error("custom error");
@@ -51,7 +52,7 @@ const ContactUs = () => {
           body: values.message,
         };
         
-        await senContactUsMessage(payloadData);
+        await sendContactUsMessage(payloadData);
 
         resetForm();
         setSuccessMsg("Message Sent Successfully!")
@@ -61,8 +62,10 @@ const ContactUs = () => {
       {
         setSuccessMsg("Something went wrong, please try again after some time!");
         setSuccessBgColor("#af4c4c");
-        
+
       }finally {
+        setIsLoading(false);
+        setIsSubmitted(true);
         setTimeout(() => {
           setIsSubmitted(false);
         }, 3000);
@@ -192,8 +195,13 @@ const ContactUs = () => {
                     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                     transition: "all 0.3s ease",
                   }}
+                  disabled={isLoading}
                 >
-                  Send Message
+                  {isLoading ? (
+                    <Spinner animation="border" size="sm" />
+                  ) : (
+                    "Send Message"
+                  )}
                 </Button>
               </Form>
             </Card>
