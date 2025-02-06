@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { BsEnvelope, BsGeoAlt, BsTelephone } from "react-icons/bs";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { senContactUsMessage } from "../service/api";
 import '../styles/contactUs.css'
 
 const ContactUs = () => {
@@ -37,12 +38,21 @@ const ContactUs = () => {
       message: "",
     },
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
 
       setIsSubmitted(true);
 
       try{
         // throw Error("custom error");
+
+        const payloadData = {
+          fromMailId: values.email,
+          fromName: values.name,
+          body: values.message,
+        };
+        
+        await senContactUsMessage(payloadData);
+
         resetForm();
         setSuccessMsg("Message Sent Successfully!")
         setSuccessBgColor("#4caf50")
@@ -51,11 +61,12 @@ const ContactUs = () => {
       {
         setSuccessMsg("Something went wrong, please try again after some time!");
         setSuccessBgColor("#af4c4c");
+        
+      }finally {
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 3000);
       }
-
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
       
     },
   });
