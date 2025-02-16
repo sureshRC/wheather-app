@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // const BACKEND_BASE_URL = "http://localhost:8081/api";
-const BACKEND_BASE_URL = "https://weather-app.us-east-1.elasticbeanstalk.com/api";
+const BACKEND_BASE_URL = " https://62d8-49-43-201-201.ngrok-free.app/api";
+
 
 export const getWeather = async (city) => {
     try {
